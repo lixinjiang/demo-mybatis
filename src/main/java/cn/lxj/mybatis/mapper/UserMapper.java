@@ -9,7 +9,7 @@ import java.util.List;
  * description
  * create by lxj 2018/4/25
  **/
-public interface UserMapper {
+public interface UserMapper{
     /**
      * 新增用户
      * @param user

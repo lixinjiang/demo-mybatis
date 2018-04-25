@@ -1,4 +1,4 @@
-package cn.lxj.mybatis;
+package cn.lxj.mybatis.study;
 
 import java.io.InputStream;
 import java.util.Properties;

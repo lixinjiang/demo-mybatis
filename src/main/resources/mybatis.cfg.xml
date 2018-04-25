@@ -1,36 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
-
-       Copyright 2009-2016 the original author or authors.
-
-       Licensed under the Apache License, Version 2.0 (the "License");
-       you may not use this file except in compliance with the License.
-       You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-       Unless required by applicable law or agreed to in writing, software
-       distributed under the License is distributed on an "AS IS" BASIS,
-       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-       See the License for the specific language governing permissions and
-       limitations under the License.
-
--->
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+<!--configuration实例来构建sqlsessionfactory-->
+<!--里面的配置有顺序-->
 <configuration>
-
     <!-- 数据库配置文件 -->
     <properties resource="jdbc.properties"/>
     <!-- 实体类的别名 -->
     <!--<typeAliases>
         <package name="com.ss.entities"/>
     </typeAliases>-->
-    <!-- 配置mybatis运行环境 -->
-    <environments default="cybatis">
-        <environment id="cybatis">
+
+    <!-- 配置mybatis运行环境,environments内包含了事务管理和连接池配置 -->
+    <environments default="development">
+        <environment id="development">
             <!-- type="JDBC" 代表使用JDBC的提交和回滚来管理事务 -->
             <transactionManager type="JDBC"/>
 
@@ -46,7 +31,6 @@
             </dataSource>
         </environment>
     </environments>
-
     <!-- 先注释掉后面用到再加进来
      <mappers>
        <mapper resource="com/ss/mappers/GoodsMapper.xml"/>
@@ -54,11 +38,12 @@
      另一种指定包
      <package name="com/ss/mappers">
     -->
-    <!-- 配置映射文件 -->
+    <!-- 配置映射文件，包含了一组mapper映射器 -->
     <mappers>
         <!-- 告知映射文件方式1，一个一个的配置
         <mapper resource="com/cy/mybatis/mapper/UserMapper.xml"/>-->
         <!-- 告知映射文件方式2，自动扫描包内的Mapper接口与配置文件 -->
+        <!--这些mapper的xml包含了sql代码和映射定义信息-->
         <package name="cn.lxj.mybatis.mapper.UserMapper"/>
     </mappers>
 </configuration>
